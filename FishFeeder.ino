@@ -10,6 +10,7 @@ int motorLoopsNb = 0; // Motor loops number setted by potentiometer (0 to 10 loo
 
 bool feeded = false;
 
+#define CMD 12
 #define LED_GREEN 2
 #define LED_RED 3
 #define QUANTITY 19
@@ -21,6 +22,8 @@ Stepper small_stepper(STEPS_PER_MOTOR_REVOLUTION, 8, 10, 9, 11);
 void setup()
 {
   Serial.begin(115200);
+
+  pinMode(CMD, INPUT_PULLUP);
 
   pinMode(LED_GREEN, OUTPUT);
   pinMode(LED_RED, OUTPUT);
@@ -60,6 +63,11 @@ ISR(TIMER1_COMPA_vect)          // timer compare interrupt service routine
 
 void loop()
 {
+  if (digitalRead(CMD) == false) {
+    small_stepper.step(STEPS_PER_OUTPUT_REVOLUTION);
+    Serial.println("User choose to manually feed");
+  }
+
   // Feed (Arduino is powered at 8 am)
   if (feeded == false) {
     if ( (elapsedHours + SET_POWERING_HOUR) >= SET_FEED_HOUR) {
