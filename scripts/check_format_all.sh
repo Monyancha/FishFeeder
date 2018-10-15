@@ -1,7 +1,7 @@
 #! /bin/bash
 echo "Checking format"
 
-find ./ \
+find ../ \
 	-type f \( -name "*.cpp" -o -name "*.c" -o -name "*.h" \) \
 | while read -r fname; do
 	echo $fname
