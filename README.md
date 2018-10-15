@@ -1,7 +1,9 @@
 
 # <p align="center">Automatic fish feeder</p>
 
+<p align="center">
 <img src="/readmepictures/zoom.jpg">
+</p>
 
 ## Context
 
@@ -23,4 +25,6 @@ Feeding time computing is based on programmable timer plug powering hour.
 
 Feeding can be manually forced by setting Arduino pin 12 to low.
 
+<p align="center">
 <img src="/readmepictures/aquarium.jpg">
+</p>
